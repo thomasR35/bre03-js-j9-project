@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Montserrat";
   src: url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap);
@@ -59,7 +60,7 @@ p {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: 2rem;
+  gap: 1rem;
   width: 100%;
   box-sizing: border-box;
 }
@@ -67,9 +68,10 @@ p {
 .grid-item {
   background-color: #fff;
   display: flex;
+  flex: 1;
   flex-direction: column;
   text-align: left;
-  width: 15rem;
+  height: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
@@ -96,10 +98,10 @@ p {
 .grid-item .item-info {
   display: flex;
   flex-direction: column;
-  flex: 1;
 }
 .grid-item .item-info h3 {
   max-width: 100%;
+  height: 4rem;
   padding: 0.5rem;
   font-size: 1.2em;
   color: #333;
@@ -113,8 +115,9 @@ p {
   padding: 0.5rem;
 }
 .grid-item .item-info .category-line .category {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: #555;
+  text-transform: capitalize;
 }
 .grid-item .item-info .category-line .favorite {
   background: none;
@@ -130,16 +133,20 @@ p {
 }
 .grid-item .item-info .price-button-container {
   display: flex;
-  flex: 1;
   justify-content: space-between;
   align-items: flex-end;
   padding: 0.5rem;
 }
 .grid-item .item-info .price {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #168aad;
+}
+.grid-item .item-info .price::after {
+  content: " €";
+  font-size: 1.4rem;
+  margin-left: 0.2rem;
 }
 .grid-item .add-to-basket {
   background-color: #1e6091;
@@ -159,21 +166,4 @@ p {
 
 .grid-item:nth-child(odd) .item-image {
   background-color: #52b69a;
-}
-
-/*Responsive*/
-@media (max-width: 1200px) {
-  .grid-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 900px) {
-  .grid-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-  }
 }/*# sourceMappingURL=style.css.map */
