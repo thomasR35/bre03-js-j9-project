@@ -22,7 +22,7 @@ body {
 .title-container {
   text-align: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 0.5rem;
 }
 
 h1 {
@@ -56,6 +56,17 @@ h3 {
 p {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
+}
+
+.fav-button {
+  background-color: #ff69b4;
+  color: #333;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 2rem;
+  font-weight: bolder;
 }
 
 .grid-container {

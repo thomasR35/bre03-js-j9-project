@@ -65,7 +65,26 @@ function createFavouriteButton(productId) {
 
   return button;
 }
+let isFavFiltered = false;
+const handleFilterClick = () => {
+  const galery = document.querySelector(".grid-container");
+  isFavFiltered = !isFavFiltered;
+  Array.from(galery.childNodes).forEach((article) => {
+    if (isFavFiltered) {
+      if (
+        !article.querySelector(".favorite i").classList.contains("fa-solid")
+      ) {
+        article.style.display = "none";
+      }
+    } else {
+      article.style.display = "flex";
+    }
+  });
+};
 
+document
+  .querySelector(".fav-button")
+  .addEventListener("click", handleFilterClick);
 function createElement(tag, className, textContent = undefined) {
   const element = document.createElement(tag);
   element.classList.add(className);
