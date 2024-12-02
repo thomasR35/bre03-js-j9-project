@@ -86,7 +86,13 @@ p {
   width: 100%;
   box-sizing: border-box;
 }
-
+.grid-item:hover img {
+  transform: scale(1.7);
+  transition: transform 00.5s ease;
+  position: relative;
+  z-index: 10000;
+  transform-origin: center 70%;
+}
 .grid-item {
   background-color: #fff;
   display: flex;
@@ -95,23 +101,16 @@ p {
   text-align: left;
   height: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 
   .item-image {
     position: relative;
     width: 100%;
     height: 15rem;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     background-size: cover;
     background-position: center;
-
     img {
       width: 100%;
       height: 100%;
