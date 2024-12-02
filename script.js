@@ -1,4 +1,9 @@
 let url = "https://dummyjson.com/products?limit=12";
+let isFavFiltered = false;
+let sessionFavorites = [];
+const galery = document.querySelector(".grid-container");
+let loadedProducts;
+const favButton = document.querySelector(".fav-button");
 
 async function getProduces() {
   console.log("loading produces");
@@ -6,8 +11,6 @@ async function getProduces() {
   let data = await response.json();
   return data;
 }
-
-let sessionFavorites = [];
 
 function getLocalStorageFavourite() {
   if (localStorage.getItem("favourites")) {
@@ -59,32 +62,14 @@ function createFavouriteButton(productId) {
 
     i.classList.toggle("fa-solid");
     i.classList.toggle("fa-regular");
+    refreshWithFilters();
   });
 
   button.append(i);
 
   return button;
 }
-let isFavFiltered = false;
-const handleFilterClick = () => {
-  const galery = document.querySelector(".grid-container");
-  isFavFiltered = !isFavFiltered;
-  Array.from(galery.childNodes).forEach((article) => {
-    if (isFavFiltered) {
-      if (
-        !article.querySelector(".favorite i").classList.contains("fa-solid")
-      ) {
-        article.style.display = "none";
-      }
-    } else {
-      article.style.display = "flex";
-    }
-  });
-};
 
-document
-  .querySelector(".fav-button")
-  .addEventListener("click", handleFilterClick);
 function createElement(tag, className, textContent = undefined) {
   const element = document.createElement(tag);
   element.classList.add(className);
@@ -98,7 +83,7 @@ function createArticle(product) {
   const article = createElement("article", "grid-item");
 
   //-------------top-------------
-  const top = createElement("div", "item-image");
+  const top = createElement("figure", "item-image");
   const img = createElement("img", "img");
   img.src = product.images[0];
 
@@ -129,15 +114,44 @@ function createArticle(product) {
   return article;
 }
 
+const handleFilterClick = () => {
+  isFavFiltered = !isFavFiltered;
+  refreshWithFilters();
+};
+
 function render() {
-  const galery = document.querySelector(".grid-container");
   sessionFavorites = getLocalStorageFavourite();
   console.log(sessionFavorites);
   getProduces().then((data) => {
-    data.products.forEach((product) => {
+    loadedProducts = data.products;
+    loadedProducts.forEach((product) => {
       galery.append(createArticle(product));
     });
   });
 }
 
-render();
+function clear() {
+  while (galery.firstChild) {
+    galery.firstChild.remove();
+  }
+}
+
+function refreshWithFilters() {
+  clear();
+  if (sessionFavorites.length > 0) {
+    favButton.style.visibility = "visible";
+  }
+  (isFavFiltered
+    ? loadedProducts.filter((product) => isInfavourites(product.id))
+    : loadedProducts
+  ).forEach((product) => {
+    galery.append(createArticle(product));
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  render();
+
+  favButton.addEventListener("click", handleFilterClick);
+  favButton.style.visibility = "hidden";
+});
