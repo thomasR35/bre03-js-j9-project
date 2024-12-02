@@ -96,6 +96,7 @@ p {
 .grid-item .item-info {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 .grid-item .item-info h3 {
   max-width: 100%;
