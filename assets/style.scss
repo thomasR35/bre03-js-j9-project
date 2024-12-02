@@ -2,6 +2,9 @@
   font-family: "Montserrat";
   src: url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap);
 }
+* {
+  box-sizing: border-box;
+}
 body {
   font-family: "Montserrat", sans-serif;
   margin: 0;
@@ -70,6 +73,8 @@ p {
 
 .grid-item {
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
   text-align: left;
   width: 15rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -98,6 +103,8 @@ p {
   }
 
   .item-info {
+    display: flex;
+    flex-direction: column;
     h3 {
       max-width: 100%;
       padding: 0.5rem;
@@ -136,14 +143,15 @@ p {
 
     .price-button-container {
       display: flex;
+      flex: 1;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-end;
       padding: 0.5rem;
     }
 
     .price {
       margin: 0;
-      font-size: 0.8rem;
+      font-size: 1.2rem;
       font-weight: bold;
       color: #168aad;
     }
@@ -153,7 +161,7 @@ p {
     background-color: #1e6091;
     color: #fff;
     border: none;
-    padding: 1rem 2rem;
+    padding: 0.5rem;
     cursor: pointer;
     transition: background-color 0.2s;
 
