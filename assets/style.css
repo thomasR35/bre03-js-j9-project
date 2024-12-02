@@ -1,0 +1,167 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap);
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #52b69a, #34a0a4, #168aad, #1a759f, #1e6091, #184e77);
+}
+
+.title-container {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  text-align: center;
+  background-color: #d9ed92;
+  display: inline-block;
+  padding: 0.5rem;
+}
+
+.products-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  max-width: 1200px;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+h3 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #fff;
+  text-align: left;
+  width: 100%;
+}
+
+p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.grid-item {
+  background-color: #fff;
+  text-align: left;
+  width: 15rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.grid-item:hover {
+  transform: scale(1.05);
+}
+.grid-item .item-image {
+  position: relative;
+  width: 100%;
+  height: 15rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+}
+.grid-item .item-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.grid-item .item-info h3 {
+  max-width: 100%;
+  padding: 0.5rem;
+  font-size: 1.2em;
+  color: #333;
+  overflow: hidden;
+}
+.grid-item .item-info .category-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+  padding: 0.5rem;
+}
+.grid-item .item-info .category-line .category {
+  font-size: 0.9rem;
+  color: #555;
+}
+.grid-item .item-info .category-line .favorite {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+.grid-item .item-info .category-line .favorite .fa-heart {
+  font-size: 1.2rem;
+}
+.grid-item .item-info .category-line .favorite .rose {
+  color: #ff69b4;
+}
+.grid-item .item-info .price-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+.grid-item .item-info .price {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #168aad;
+}
+.grid-item .add-to-basket {
+  background-color: #1e6091;
+  color: #fff;
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.grid-item .add-to-basket:hover {
+  background-color: #184e77;
+}
+
+.grid-item:nth-child(even) .item-image {
+  background-color: #d9ed92;
+}
+
+.grid-item:nth-child(odd) .item-image {
+  background-color: #52b69a;
+}
+
+/*Responsive*/
+@media (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 900px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}/*# sourceMappingURL=style.css.map */
